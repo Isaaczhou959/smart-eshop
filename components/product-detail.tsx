@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const ProductDetail = ({ product }: Props) => {
-  const { items, addItem, removeItem, clearCart } = useCartStore();
+  const { items, addItem, removeItem } = useCartStore();
   const price = product.default_price as Stripe.Price;
   const cartItem = items.find((item) => item.id === product.id);
   const quantity = cartItem ? cartItem.quantity : 0;
