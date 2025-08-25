@@ -20,8 +20,8 @@ export default async function Home() {
               Welcome to my E-shop
             </h2>
             <p className="text-neutral-600">
-              “Your One-Stop Online Shop for Trendy, Practical, and Affordable
-              Finds."
+              Your One-Stop Online Shop for Trendy, Practical, and Affordable
+              Finds.
             </p>
             <Button
               asChild
