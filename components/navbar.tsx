@@ -9,6 +9,7 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
+import Image from "next/image";
 
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
@@ -28,8 +29,15 @@ export const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-white shadow">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
-        <Link href="/" className="hover:text-blue-600">
-          My Ecommerce
+        <Link href="/" className="hover:text-blue-600 flex items-center">
+          <Image
+            src="/logo.png"
+            alt="MyEstore"
+            width={36}
+            height={36}
+            className="w-8 h-8 md:w-10 md:h-10"
+          />
+          <p className="hidden md:block text-2xl art-text">NovaTrend</p>
         </Link>
 
         <div className="hidden md:flex space-x-6">

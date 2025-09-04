@@ -27,8 +27,7 @@ export const Carousel = ({ products }: Props) => {
             alt={currentProduct.name}
             src={currentProduct.images[0]}
             fill
-            className="transition-opacity duration-500 ease-in-out"
-            objectFit="cover"
+            className="transition-opacity duration-500 ease-in-out object-cover"
           />
         </div>
       )}
