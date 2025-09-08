@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <div className="mx-auto container mt-16 flex flex-col items-center md:flex-row md:items-start bg-gray-800 p-8 rounded-xl">
+    <div className="mx-auto container mt-16 flex flex-col items-center md:flex-row md:items-start bg-white p-8 rounded-xl">
       <div className="flex flex-col gap-4 items-center md:items-start">
         <Link href="/" className="flex items-center">
           <Image src="/logo.png" alt="MyEstore" width={36} height={36} />
