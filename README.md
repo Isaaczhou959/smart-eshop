@@ -9,7 +9,8 @@ A modern, full-stack e-commerce application built with Next.js 15, featuring Str
 - **Shopping Cart**: Add/remove items with persistent cart state using Zustand
 - **Payment Processing**: Secure checkout powered by Stripe
 - **Responsive Design**: Mobile-first design with Tailwind CSS
-- **Product Carousel**: Dynamic product showcase on homepage
+- **Interactive Carousel**: Dynamic product showcase with click-to-navigate and smooth animations
+- **Product Slider**: Horizontal scrolling product display with navigation controls and multi-item view
 - **Search Functionality**: Real-time product search by name and description
 - **Smart Navigation**: Modern navbar with active states, icons, and smooth animations
 - **Professional Footer**: Complete footer with links, social media, newsletter signup
@@ -206,7 +207,103 @@ Created by Isaac Zhou - [GitHub](https://github.com/isaaczhou)
 
 ## 📝 Recent Updates
 
-### Navigation Bar Enhancement (Latest)
+### Product Display Enhancement (Latest)
+
+#### 🛒 **New ProductSlider Component**
+
+- **Horizontal Scrolling Layout**:
+
+  - Multi-product display in a single row
+  - Smooth horizontal scrolling with navigation arrows
+  - Responsive card design (264px width, fixed height)
+  - Support for 8+ products with seamless scrolling
+
+- **Advanced Navigation Controls**:
+
+  - Left/right arrow buttons with disabled states
+  - Scroll position indicators (dot navigation)
+  - Click-to-scroll functionality for precise control
+  - Smooth scroll behavior with CSS transitions
+
+- **Enhanced Product Cards**:
+
+  - Hover effects with scale animations
+  - Product images with aspect ratio preservation
+  - Product name, description, and price display
+  - Individual "Add to Cart" buttons with event handling
+  - Direct product page navigation on card click
+
+- **Visual Design Features**:
+  - Gradient edge masks for seamless overflow
+  - Customizable section titles
+  - Gray background differentiation from other sections
+  - Responsive design for different screen sizes
+
+#### 📊 **Data Architecture Optimization**
+
+- **Separated Data Sources**:
+
+  - `featuredProducts`: 5 products for Carousel component
+  - `trendingProducts`: 8 products for ProductSlider component
+  - Independent API calls for optimized data loading
+
+- **Performance Benefits**:
+  - Parallel data fetching for faster page loads
+  - Component-specific data limits for optimal UX
+  - Reduced data redundancy and improved caching
+  - Scalable architecture for future feature additions
+
+#### 🎨 **Homepage Layout Enhancement**
+
+- **Multi-tier Product Display**:
+  - Hero section with featured product image
+  - Carousel for highlighted product rotation
+  - ProductSlider for browsing multiple trending items
+  - Distinct visual sections with varied backgrounds
+
+### Carousel Interaction Enhancement
+
+#### 🖱️ **Click-to-Navigate Functionality**
+
+- **Smart Click Areas**:
+
+  - Product images are fully clickable for navigation
+  - Product name and price area also clickable
+  - Seamless integration with existing hover effects
+
+- **Intelligent Event Handling**:
+
+  - `onClick + useRouter` implementation for precise control
+  - Navigation buttons use `stopPropagation()` to prevent conflicts
+  - Animation state protection (no clicks during transitions)
+  - Direct routing to `/products/${productId}` for product details
+
+- **Enhanced User Experience**:
+  - Visual cursor feedback (`cursor-pointer`) on clickable areas
+  - Preserved hover scale effects (`group-hover:scale-105`)
+  - Smooth navigation without page refresh
+  - Conflict-free interaction with carousel controls
+
+#### 🎬 **Smooth Transition Animations**
+
+- **Image Transitions**:
+
+  - Fade-in/fade-out effects for image changes
+  - 500ms smooth opacity transitions
+  - Automatic and manual navigation both animated
+
+- **Text Animations**:
+
+  - Synchronized text sliding effects
+  - Subtle downward motion with opacity changes
+  - Coordinated timing with image transitions
+
+- **Technical Implementation**:
+  - State-based animation control (`isTransitioning`)
+  - 200ms transition delays for smooth sequencing
+  - CSS transitions for optimal performance
+
+### Navigation Bar Enhancement
 
 #### 🧭 **Modern Navigation Design**
 

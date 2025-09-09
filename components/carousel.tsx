@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Card, CardContent, CardTitle } from "./ui/card";
 import Image from "next/image";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
 
 interface Props {
   products: Stripe.Product[];
@@ -12,6 +13,7 @@ interface Props {
 export const Carousel = ({ products }: Props) => {
   const [current, setCurrent] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,13 +42,24 @@ export const Carousel = ({ products }: Props) => {
     }, 200);
   };
 
+  const handleProductClick = () => {
+    // 如果正在过渡动画中，不响应点击
+    if (isTransitioning) return;
+
+    // 跳转到商品详情页
+    router.push(`/products/${currentProduct.id}`);
+  };
+
   const currentProduct = products[current];
   const price = currentProduct.default_price as Stripe.Price;
 
   return (
     <Card className="relative bg-white overflow-hidden rounded-lg shadow-md border-gray-300 group">
       {currentProduct.images && currentProduct.images[0] && (
-        <div className="relative h-80 w-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+        <div
+          className="relative h-80 w-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center cursor-pointer"
+          onClick={handleProductClick}
+        >
           <Image
             alt={currentProduct.name}
             src={currentProduct.images[0]}
@@ -66,11 +79,12 @@ export const Carousel = ({ products }: Props) => {
         <div className="text-center">
           {/* 产品名称和价格组合 */}
           <div
-            className={`bg-black/30 px-6 py-4 rounded-lg backdrop-blur-sm border border-white/20 inline-block transition-all duration-500 ease-in-out transform ${
+            className={`bg-black/30 px-6 py-4 rounded-lg backdrop-blur-sm border border-white/20 inline-block transition-all duration-500 ease-in-out transform cursor-pointer ${
               isTransitioning
                 ? "opacity-0 translate-y-2"
                 : "opacity-100 translate-y-0"
             }`}
+            onClick={handleProductClick}
           >
             <div className="flex items-center justify-center space-x-4">
               <CardTitle className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg">

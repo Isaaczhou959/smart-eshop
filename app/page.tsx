@@ -3,6 +3,7 @@ import { stripe } from "@/lib/stripe";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Carousel } from "@/components/carousel";
+import { ProductSlider } from "@/components/product-slider";
 import {
   ShoppingBagIcon,
   TruckIcon,
@@ -11,12 +12,17 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default async function Home() {
-  const products = await stripe.products.list({
+  // Featured Products for Carousel (5 products)
+  const featuredProducts = await stripe.products.list({
     expand: ["data.default_price"],
     limit: 5,
   });
 
-  const featuredProducts = products.data.slice(0, 3);
+  // Trending Products for ProductSlider (8 products)
+  const trendingProducts = await stripe.products.list({
+    expand: ["data.default_price"],
+    limit: 8,
+  });
 
   return (
     <div className="space-y-16">
@@ -69,7 +75,7 @@ export default async function Home() {
               width={500}
               height={500}
               className="relative rounded-2xl shadow-2xl transition-transform duration-300 hover:scale-105"
-              src={products.data[0]?.images[0] || "/placeholder.jpg"}
+              src={featuredProducts.data[0]?.images[0] || "/placeholder.jpg"}
               priority
             />
           </div>
@@ -79,25 +85,51 @@ export default async function Home() {
       {/* Featured Products Carousel */}
       <section id="featured" className="py-12">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="text-center mb-12">
+          <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Featured Products
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl">
               Check out our most popular items, handpicked for quality and
               style.
             </p>
           </div>
-          <Carousel products={products.data} />
+          <Carousel products={featuredProducts.data} />
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Product Slider */}
       <section className="py-12">
         <div className="mx-auto max-w-7xl px-4">
-          <h2 className="text-center text-3xl font-bold text-gray-900 mb-12">
-            Why Choose NovaTrend?
-          </h2>
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Trending Products
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl">
+              Discover what's popular right now with our trending product
+              selection.
+            </p>
+          </div>
+        </div>
+        <div className="bg-white py-8 w-full">
+          <div className="mx-auto max-w-7xl px-4">
+            <ProductSlider products={trendingProducts.data} />
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose NovaTrend Section */}
+      <section className="py-12">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Why Choose NovaTrend?
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl">
+              We're committed to providing you with the best shopping experience
+              through quality products and exceptional service.
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center space-y-4 p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
