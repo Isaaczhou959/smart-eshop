@@ -106,7 +106,7 @@ export default async function Home() {
               Trending Products
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl">
-              Discover what's popular right now with our trending product
+              Discover what&apos;s popular right now with our trending product
               selection.
             </p>
           </div>
@@ -126,7 +126,7 @@ export default async function Home() {
               Why Choose NovaTrend?
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl">
-              We're committed to providing you with the best shopping experience
+              We&apos;re committed to providing you with the best shopping experience
               through quality products and exceptional service.
             </p>
           </div>
