@@ -53,7 +53,7 @@ export const ProductSlider = ({ products }: Props) => {
       <button
         onClick={scrollLeft}
         disabled={scrollPosition <= 0}
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 border border-gray-200"
+        className="absolute cursor-pointer left-2 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 border border-gray-200"
         aria-label="Scroll left"
       >
         <ChevronLeftIcon className="h-6 w-6 text-gray-700" />
@@ -63,7 +63,7 @@ export const ProductSlider = ({ products }: Props) => {
       <button
         onClick={scrollRight}
         disabled={scrollPosition >= maxScroll}
-        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 border border-gray-200"
+        className="absolute cursor-pointer right-2 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 border border-gray-200"
         aria-label="Scroll right"
       >
         <ChevronRightIcon className="h-6 w-6 text-gray-700" />

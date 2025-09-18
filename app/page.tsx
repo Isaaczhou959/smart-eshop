@@ -126,8 +126,8 @@ export default async function Home() {
               Why Choose NovaTrend?
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl">
-              We&apos;re committed to providing you with the best shopping experience
-              through quality products and exceptional service.
+              We&apos;re committed to providing you with the best shopping
+              experience through quality products and exceptional service.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
